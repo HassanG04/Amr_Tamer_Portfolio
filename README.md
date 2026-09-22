@@ -27,11 +27,11 @@ Activity order: 365 Financial Analyst → DEPI → McKinsey.org Forward → Dree
 
 Run a static web server in this directory, for example `python -m http.server 4186 --bind 127.0.0.1`, then visit http://127.0.0.1:4186/.
 
-Repository: https://github.com/HassanG04/Mr_Amr_Portfolio
+Repository: https://github.com/HassanG04/Amr_Tamer_Portfolio
 
-Vercel project: mr-amr-portfolio. Framework: Other. No build command. The root folder is served directly. Environment files and local Vercel metadata are excluded from Git.
+Vercel project: amr-tamer-portfolio. Framework: Other. No build command. The root folder is served directly. Environment files and local Vercel metadata are excluded from Git.
 
-Live website: https://mr-amr-portfolio.vercel.app/
+Live website: https://amr-tamer-portfolio.vercel.app/
 
 Deploy with Vercel CLI from this folder. Automatic GitHub-triggered deployment still requires a GitHub Login Connection in the Vercel account.
 
