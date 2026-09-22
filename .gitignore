@@ -1,0 +1,15 @@
+.vercel/
+node_modules/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.log
+.DS_Store
+Thumbs.db
+files/
+Certificates/
+assets/*.webp
+assets/resume.txt
+images/*.png
+scripts/

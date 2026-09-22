@@ -1,0 +1,12 @@
+.git/
+.env
+.env.*
+scripts/
+README.md
+node_modules/
+*.log
+files/
+Certificates/
+assets/*.webp
+assets/resume.txt
+images/*.png
