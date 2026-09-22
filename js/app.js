@@ -14,7 +14,7 @@
     graduate:'m2 9 10-5 10 5-10 5L2 9zm4 2v6c4 3 8 3 12 0v-6m4-2v8',
     mail:'M3 5h18v14H3V5zm0 0 9 8 9-8',
     phone:'M7 3H4a1 1 0 0 0-1 1c0 9 8 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 2c-3-1-6-4-7-7l2-2-2-5z',
-    linkedin:'M4 9v11m0-16v.2M9 20V9h4v2c1-3 7-3 7 2v7m-7 0v-6',
+    linkedin:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z',
     muted:'m11 5-5 4H3v6h3l5 4V5zm5 4 5 6m0-6-5 6',
     sound:'m11 5-5 4H3v6h3l5 4V5zm5 3c3 2 3 6 0 8m3-11c5 4 5 10 0 14',
     moon:'M20 14A8 8 0 0 1 10 4a8.5 8.5 0 1 0 10 10z',
@@ -23,17 +23,17 @@
     download:'M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5',
     expand:'M4 9V4h5m6 0h5v5M4 15v5h5m6 0h5v-5'
   };
-  const icon = name => '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="' + (paths[name] || paths.arrow) + '"/></svg>';
+  const icon = name => '<svg class="icon'+(name==='linkedin'?' icon-linkedin':'')+'" viewBox="0 0 24 24" aria-hidden="true"><path d="' + (paths[name] || paths.arrow) + '"/></svg>';
   function mountIcons(root=document) { root.querySelectorAll('[data-icon]').forEach(el => { el.innerHTML=icon(el.dataset.icon); }); }
-  const tags = values => '<div class="tags">' + values.map(t => '<span>'+escape(t)+'</span>').join('') + '</div>';
+  const tags = values => '<div class="tags">' + values.map(t => '<span data-tech="'+escape(t.toLowerCase().replace(/\s+/g,'-'))+'">'+escape(t)+'</span>').join('') + '</div>';
   $('#servicesGrid').innerHTML = data.services.map(s => '<article class="service-card surface interactive-card reveal"><div class="service-top">'+icon(s.icon)+'<span>'+s.number+'</span></div><h3>'+escape(s.title)+'</h3><p>'+escape(s.text)+'</p><div class="service-deliverable">'+escape(s.deliverable)+'</div>'+tags(s.tags)+'</article>').join('');
   $('#experienceList').innerHTML = data.experience.map(e => '<article class="experience-row reveal"><span>'+escape(e.period)+'</span><div><h4>'+escape(e.title)+'</h4><small>'+escape(e.company)+'</small></div><p>'+escape(e.description)+'</p></article>').join('');
   const linkedIn='https://www.linkedin.com/in/amr-tamer-ahmed/';
   const requestLink=label=>'<a class="text-button" href="'+linkedIn+'" target="_blank" rel="noopener noreferrer">'+label+' '+icon('external')+'</a>';
   $('#projectsGrid').innerHTML=data.projects.map(p=>'<article class="project-card surface interactive-card reveal"><div class="project-art art-'+p.id+'" aria-hidden="true"><span class="art-index">'+p.number+' / SELECTED RESEARCH</span><div class="art-lines"><i></i><i></i><i></i><i></i><i></i></div><strong>'+escape(p.title)+'</strong><span class="art-caption">Business context. Financial perspective.</span></div><div class="project-content"><span class="eyebrow">'+p.number+' / '+escape(p.category)+'</span><h3>'+escape(p.title)+'</h3><p>'+escape(p.context)+'</p><dl><dt>THE APPROACH</dt><dd>'+escape(p.approach)+'</dd><dt>THE DELIVERABLE</dt><dd>'+escape(p.outcome)+'</dd></dl>'+tags(p.tags)+'<div class="project-footer"><small>'+escape(p.credit)+'</small>'+requestLink('Request via LinkedIn')+'</div></div></article>').join('');
-  function certificateImage(c) { return '<div class="credential-summary"><span class="credential-emblem" aria-hidden="true">'+(c.id==='modeling'||c.id==='dcf'?'365':c.id==='depi'?'DEPI':'Forward')+'</span><span class="eyebrow">'+escape(c.issuer)+'</span><strong>'+escape(c.title)+'</strong><span class="credential-status">'+icon('graduate')+' Completed · '+escape(c.date)+'</span><small>Qualification summary · Original available on request</small></div>'; }
+  function certificateImage(c) { return '<button class="certificate-image" type="button" data-certificate="'+c.id+'" aria-label="Inspect '+escape(c.title)+' certificate"><img src="'+c.image+'" alt="'+escape(c.title)+' certificate awarded to Amr Tamer" width="'+c.width+'" height="'+c.height+'" loading="lazy" decoding="async"><span class="preview-badge">'+icon('expand')+' Inspect certificate</span></button>'; }
   function certificateCopy(c) { return '<div class="certificate-copy"><span class="eyebrow">LEARNING INTO PRACTICE</span><h4>'+escape(c.title)+'</h4><p>'+escape(c.description)+'</p>'+tags(c.tags)+requestLink('Request via LinkedIn')+'</div>'; }
-  $('#certificateTrack').innerHTML=data.certificates.slice(0,2).map((c,i)=>'<article class="certificate-slide" role="group" aria-roledescription="slide" aria-label="'+(i+1)+' of 2: '+escape(c.title)+'"'+(i?' inert aria-hidden="true"':' aria-hidden="false"')+'>'+certificateImage(c)+certificateCopy(c)+'</article>').join('');
+  $('#certificateTrack').innerHTML=data.certificates.slice(0,2).map((c,i)=>'<article class="certificate-slide'+(i?'':' is-active')+'" role="group" aria-roledescription="slide" aria-label="'+(i+1)+' of 2: '+escape(c.title)+'"'+(i?' inert aria-hidden="true"':' aria-hidden="false"')+'>'+certificateImage(c)+certificateCopy(c)+'</article>').join('');
   $('#learningCards').innerHTML=data.certificates.slice(2).map((c,i)=>'<section class="learning-group" aria-labelledby="'+c.id+'Heading"><div class="journey-label reveal"><span>0'+(i+2)+'</span><div><h3 id="'+c.id+'Heading">'+escape(c.issuer)+'</h3><p>'+(i?'Professional skills for a changing world.':'Turning data into a business perspective.')+'</p></div></div><article class="learning-card surface interactive-card reveal">'+certificateImage(c)+certificateCopy(c)+'</article></section>').join('');
   mountIcons();
   $('#year').textContent=new Date().getFullYear();
@@ -89,7 +89,7 @@
   });
   document.addEventListener('click',e=>{
     const control=e.target.closest('a,button');if(!control)return;
-    if(control.matches('#soundToggle,#themeToggle,#menuToggle,#certPrev,#certNext,[data-slide]'))return;
+    if(control.matches('#soundToggle,#themeToggle,#menuToggle,#certPrev,#certNext,[data-slide],[data-certificate],#closeCertificate'))return;
     playSound('select');
   });
 
@@ -112,18 +112,53 @@
     const next=(index+slides.length)%slides.length;if(next===activeSlide)return;
     playSound(next>activeSlide?'right':'left');playSound(next>activeSlide?'front':'back');
     activeSlide=next;track.style.transform='translate3d('+(-next*100)+'%,0,0)';
-    slides.forEach((slide,i)=>{slide.inert=i!==next;slide.setAttribute('aria-hidden',String(i!==next));});
+    slides.forEach((slide,i)=>{slide.inert=i!==next;slide.setAttribute('aria-hidden',String(i!==next));slide.classList.toggle('is-active',i===next);});
     $$('[data-slide]').forEach(b=>b.setAttribute('aria-current',String(Number(b.dataset.slide)===next)));
     $('#slideAnnouncement').textContent='Certificate '+(next+1)+' of 2: '+data.certificates[next].title;
   }
   $('#certPrev').addEventListener('click',()=>showSlide(activeSlide-1));$('#certNext').addEventListener('click',()=>showSlide(activeSlide+1));
   $$('[data-slide]').forEach(b=>b.addEventListener('click',()=>showSlide(Number(b.dataset.slide))));
   $('.certificate-carousel').addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();showSlide(activeSlide+(e.key==='ArrowRight'?1:-1));}});
-  let touchX=0,touchY=0;
+  let touchX=0,touchY=0,swipedAt=-1000;
   $('.carousel-viewport').addEventListener('touchstart',e=>{touchX=e.changedTouches[0].clientX;touchY=e.changedTouches[0].clientY;},{passive:true});
-  $('.carousel-viewport').addEventListener('touchend',e=>{const x=e.changedTouches[0].clientX-touchX,y=e.changedTouches[0].clientY-touchY;if(Math.abs(x)>45&&Math.abs(x)>Math.abs(y)*1.3){showSlide(activeSlide+(x<0?1:-1));}},{passive:true});
+  $('.carousel-viewport').addEventListener('touchend',e=>{const x=e.changedTouches[0].clientX-touchX,y=e.changedTouches[0].clientY-touchY;if(Math.abs(x)>45&&Math.abs(x)>Math.abs(y)*1.3){swipedAt=performance.now();showSlide(activeSlide+(x<0?1:-1));}},{passive:true});
+
+  // Only the four explicitly approved certificate images are displayed publicly.
+  const certificateDialog=$('#certificateDialog');
+  let certificateTrigger=null;
+  document.addEventListener('click',e=>{
+    const trigger=e.target.closest('[data-certificate]');
+    if(!trigger||performance.now()-swipedAt<400)return;
+    const certificate=data.certificates.find(c=>c.id===trigger.dataset.certificate);
+    if(!certificate)return;
+    $('#certificateTitle').textContent=certificate.title;
+    $('#certificateFullImage').src=certificate.image;
+    $('#certificateFullImage').alt=certificate.title+' — awarded to Amr Tamer';
+    certificateTrigger=trigger;
+    certificateDialog.showModal();document.body.classList.add('viewer-open');
+    $('#closeCertificate').focus();playSound('select2');
+  });
+  $('#closeCertificate').addEventListener('click',()=>certificateDialog.close());
+  certificateDialog.addEventListener('click',e=>{
+    if(e.target!==certificateDialog)return;
+    const bounds=certificateDialog.getBoundingClientRect();
+    if(e.clientX<bounds.left||e.clientX>bounds.right||e.clientY<bounds.top||e.clientY>bounds.bottom)certificateDialog.close();
+  });
+  certificateDialog.addEventListener('close',()=>{
+    document.body.classList.remove('viewer-open');
+    certificateTrigger?.focus({preventScroll:true});playSound('select');
+  });
 
   const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
+  // Independent translate animation keeps the idle drift separate from hover tilt.
+  const idleCards=$$('.surface,.portrait-note');
+  idleCards.forEach((card,i)=>{card.classList.add('idle-card');card.style.setProperty('--idle-delay',(-i*1.4)+'s');});
+  if('IntersectionObserver' in window){
+    const idleObserver=new IntersectionObserver(entries=>entries.forEach(e=>e.target.classList.toggle('motion-in-view',e.isIntersecting)),{rootMargin:'40px'});
+    idleCards.forEach(card=>idleObserver.observe(card));
+  }else idleCards.forEach(card=>card.classList.add('motion-in-view'));
+  function syncMotionVisibility(){document.documentElement.classList.toggle('motion-paused',document.hidden);}
+  document.addEventListener('visibilitychange',syncMotionVisibility);syncMotionVisibility();
   if('IntersectionObserver' in window&&!reducedMotion.matches){
     const reveals=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');reveals.unobserve(e.target);}});},{threshold:.08});
     document.documentElement.classList.add('motion-ready');$$('.reveal').forEach(el=>reveals.observe(el));

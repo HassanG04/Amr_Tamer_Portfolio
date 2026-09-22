@@ -11,9 +11,10 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <script>try{const t=localStorage.getItem('amr-theme');document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}</script>
   <link rel="stylesheet" href="css/styles.css?v=1">
-  <link rel="stylesheet" href="css/summaries.css?v=1">
-  <script defer src="js/data.js?v=1"></script>
-  <script defer src="js/app.js?v=1"></script>
+  <link rel="stylesheet" href="css/summaries.css?v=2">
+  <link rel="stylesheet" href="css/motion.css?v=2">
+  <script defer src="js/data.js?v=2"></script>
+  <script defer src="js/app.js?v=2"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -58,7 +59,7 @@
       <div class="hero-bottom"><span>Analysis with context. Models with purpose.</span><a href="#about">Get to know me <span data-icon="down"></span></a></div>
     </section>
 
-    <div class="tool-strip" aria-label="Core skills"><div class="shell"><span>MY TOOLKIT</span><span>Excel</span><span>Power BI</span><span>SQL</span><span>Python</span><span>Financial Modeling</span><span>Equity Research</span></div></div>
+    <div class="tool-strip" aria-label="Core skills"><div class="shell"><span>MY TOOLKIT</span><a class="tool-chip" data-tech="excel" href="#services">Excel</a><a class="tool-chip" data-tech="power-bi" href="#services">Power BI</a><a class="tool-chip" data-tech="sql" href="#services">SQL</a><a class="tool-chip" data-tech="python" href="#services">Python</a><a class="tool-chip" data-tech="financial-modeling" href="#services">Financial Modeling</a><a class="tool-chip" data-tech="equity-research" href="#work">Equity Research</a></div></div>
 
     <section id="about" class="section shell" aria-labelledby="aboutHeading">
       <div class="section-heading reveal"><div><span class="eyebrow">01 / The perspective</span><h2 id="aboutHeading">Beyond the <em>spreadsheet.</em></h2></div><p>Good analysis starts with understanding the business—and ends with making it understandable.</p></div>
@@ -100,7 +101,7 @@
       <div class="shell">
         <div class="section-heading reveal"><div><span class="eyebrow">04 / Activity & credentials</span><h2 id="activityHeading">Always <em>building forward.</em></h2></div><p>Financial foundations, practical analytics, and the professional skills that connect them.</p></div>
         <div class="journey-label reveal"><span>01</span><div><h3>365 Financial Analyst</h3><p>Modeling and valuation, from the fundamentals up.</p></div><span class="journey-mark">365<span>FINANCIAL ANALYST</span></span></div>
-        <section class="certificate-carousel surface reveal" role="region" aria-roledescription="carousel" aria-label="365 Financial Analyst certificates" tabindex="0">
+        <section class="certificate-carousel surface interactive-card reveal" role="region" aria-roledescription="carousel" aria-label="365 Financial Analyst certificates" tabindex="0">
           <div class="carousel-viewport"><div id="certificateTrack" class="carousel-track"></div></div>
           <div class="carousel-navigation"><button class="icon-button" id="certPrev" type="button" aria-label="Previous 365 certificate"><span data-icon="left"></span></button><div class="carousel-steps" aria-label="Choose a certificate"><button type="button" data-slide="0" aria-label="Three-statement modeling certificate" aria-current="true">01</button><span aria-hidden="true"></span><button type="button" data-slide="1" aria-label="DCF valuation certificate" aria-current="false">02</button></div><button class="icon-button" id="certNext" type="button" aria-label="Next 365 certificate"><span data-icon="arrow"></span></button></div>
           <span id="slideAnnouncement" class="sr-only" role="status"></span>
@@ -118,6 +119,10 @@
   </main>
   <footer class="shell"><a class="brand" href="#home" aria-label="Return to Amr Tamer's home">AT<span>.</span></a><p>Amr Tamer · Finance, with perspective.</p><span>© <span id="year">2026</span></span><a href="#home">Back to top <span data-icon="up"></span></a></footer>
 
+  <dialog id="certificateDialog" class="document-dialog certificate-dialog" aria-labelledby="certificateTitle">
+    <div class="viewer-header"><div><span class="eyebrow">CERTIFICATE</span><h2 id="certificateTitle">Certificate</h2></div><button id="closeCertificate" class="icon-button" type="button" aria-label="Close certificate"><span data-icon="close"></span></button></div>
+    <div class="certificate-viewer-body"><img id="certificateFullImage" alt=""></div>
+  </dialog>
   <noscript><p class="noscript-note">Enable JavaScript to explore project and qualification summaries, or <a href="https://www.linkedin.com/in/amr-tamer-ahmed/">connect with Amr on LinkedIn</a>.</p></noscript>
 </body>
 </html>

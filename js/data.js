@@ -1,4 +1,4 @@
-/* Public summaries only. Original documents are kept locally and excluded from publication. */
+/* Public work summaries and approved certificate images. CV and presentation PDFs remain private. */
 window.AMR_DATA = {
   services: [
     { number: '01', icon: 'chart', title: 'Financial modeling & valuation', text: 'Understand the drivers behind a business with structured financial models and clearly documented assumptions.', deliverable: 'Three-statement models · DCF analysis · Financial forecasts', tags: ['Excel', 'Financial Analysis', 'DCF'] },
@@ -16,9 +16,9 @@ window.AMR_DATA = {
     { id: 'telecom', number: '03', title: 'Telecom Egypt / WE', category: 'TELECOMMUNICATIONS', context: 'A joint presentation exploring Telecom Egypt within the Egyptian telecom sector.', approach: 'Industry and business analysis, financial projections, and cash flow valuation.', outcome: 'A structured presentation bringing market context and valuation calculations together.', tags: ['Equity Research', 'Financial Analysis'], credit: 'Collaborative project · Amr Tamer & Omar Samir' }
   ],
   certificates: [
-    { id: 'modeling', title: 'Building a 3-Statement Model in Excel', issuer: '365 Financial Analyst', date: 'MARCH 2026', description: 'Connecting the income statement, balance sheet, and cash flow statement in one financial model. A stronger foundation for understanding how a business works.', tags: ['Excel', 'Financial Modeling'] },
-    { id: 'dcf', title: 'Discounted Cash Flow Valuation', issuer: '365 Financial Analyst', date: 'MARCH 2026', description: 'Developing a structured approach to cash flow forecasts, discount rates, and business valuation—while keeping the assumptions visible.', tags: ['DCF Valuation', 'Corporate Finance'] },
-    { id: 'depi', title: 'Data Analyst Specialist', issuer: 'Digital Egypt Pioneers Initiative', date: 'JUN – DEC 2025', description: 'Practical training in collecting, cleaning, and analyzing data, with dashboards that turn technical findings into useful business insights.', tags: ['Power BI', 'SQL', 'Python'] },
-    { id: 'mckinsey', title: 'McKinsey.org Forward', issuer: 'McKinsey.org', date: 'JULY 2025', description: 'Completed the Forward online learning program, developing structured problem-solving, effective communication, adaptability, and digital skills.', tags: ['Problem Solving', 'Communication', 'Adaptability'] }
+    { id: 'modeling', image: 'images/1.png', width: 1295, height: 905, title: 'Building a 3-Statement Model in Excel', issuer: '365 Financial Analyst', date: 'MARCH 2026', description: 'Connecting the income statement, balance sheet, and cash flow statement in one financial model. A stronger foundation for understanding how a business works.', tags: ['Excel', 'Financial Modeling'] },
+    { id: 'dcf', image: 'images/2.png', width: 1329, height: 907, title: 'Discounted Cash Flow Valuation', issuer: '365 Financial Analyst', date: 'MARCH 2026', description: 'Developing a structured approach to cash flow forecasts, discount rates, and business valuation—while keeping the assumptions visible.', tags: ['DCF Valuation', 'Corporate Finance'] },
+    { id: 'depi', image: 'images/DEPI.png', width: 1123, height: 793, title: 'Data Analyst Specialist', issuer: 'Digital Egypt Pioneers Initiative', date: 'JUN – DEC 2025', description: 'Practical training in collecting, cleaning, and analyzing data, with dashboards that turn technical findings into useful business insights.', tags: ['Power BI', 'SQL', 'Python'] },
+    { id: 'mckinsey', image: 'images/McKinsey.png', width: 1055, height: 812, title: 'McKinsey.org Forward', issuer: 'McKinsey.org', date: 'JULY 2025', description: 'Completed the Forward online learning program, developing structured problem-solving, effective communication, adaptability, and digital skills.', tags: ['Problem Solving', 'Communication', 'Adaptability'] }
   ]
 };

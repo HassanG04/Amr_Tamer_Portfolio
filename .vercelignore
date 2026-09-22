@@ -10,3 +10,7 @@ Certificates/
 assets/*.webp
 assets/resume.txt
 images/*.png
+!images/1.png
+!images/2.png
+!images/DEPI.png
+!images/McKinsey.png

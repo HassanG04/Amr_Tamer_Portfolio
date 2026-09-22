@@ -1,4 +1,4 @@
-/* Public-safe editorial visuals; no private document screenshots. */
+/* Editorial project visuals; the original research PDFs stay private. */
 .project-art{min-height:280px;padding:32px;position:relative;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;background:linear-gradient(145deg,var(--surface-2),var(--bg));border-bottom:1px solid var(--line)}
 .project-card:first-child .project-art{min-height:390px;border-bottom:0;border-right:1px solid var(--line)}
 .art-index,.art-caption{font-size:.62rem;letter-spacing:.12em;color:var(--accent);position:relative;z-index:1}.art-caption{letter-spacing:.03em;color:var(--muted);margin-top:15px}
@@ -6,12 +6,8 @@
 .art-lines{display:flex;align-items:end;gap:14px;height:170px;position:absolute;right:25px;bottom:45px;width:60%;opacity:.3;transform:skewY(-12deg)}
 .art-lines i{flex:1;border:1px solid var(--accent);background:linear-gradient(transparent,var(--glow));border-radius:8px 8px 0 0;height:30%}.art-lines i:nth-child(2){height:50%}.art-lines i:nth-child(3){height:45%}.art-lines i:nth-child(4){height:75%}.art-lines i:nth-child(5){height:95%}
 .art-elsewedy .art-lines{transform:skewY(8deg)}.art-telecom .art-lines i{border-radius:70px}
-.credential-summary{padding:35px;border:1px solid var(--line);border-radius:14px;background:radial-gradient(ellipse at 10% 5%,var(--glow),transparent 80%),var(--bg);min-height:320px;display:flex;flex-direction:column;justify-content:center;gap:20px}
-.credential-emblem{font-weight:800;font-size:3rem;line-height:1;letter-spacing:-.06em;color:var(--accent)}.credential-summary .eyebrow{font-size:.57rem}.credential-summary strong{font-size:1.55rem;line-height:1.25;letter-spacing:-.025em}.credential-status{font-size:.72rem;color:var(--muted);display:flex;gap:10px;align-items:center}.credential-summary small{font-size:.6rem;color:var(--muted)}
 .analytics-note>.text-button{margin-left:auto;white-space:nowrap}
-.learning-group:last-child .credential-summary{grid-column:2;grid-row:1}
 .project-footer>.text-button{font-size:.73rem}
-@media(max-width:850px){.learning-group:last-child .credential-summary{grid-column:auto;grid-row:auto}}
-@media(max-width:850px){.project-card:first-child .project-art{min-height:300px;border-right:0;border-bottom:1px solid var(--line)}.credential-summary{min-height:280px}.analytics-note>.text-button{margin-left:54px}}
-@media(max-width:620px){.project-art{padding:25px;min-height:240px}.project-card:first-child .project-art{min-height:260px}.project-art strong{font-size:2.35rem}.credential-summary{padding:26px;min-height:280px}.credential-summary strong{font-size:1.4rem}.analytics-note>.text-button{margin-left:41px}}
+@media(max-width:850px){.project-card:first-child .project-art{min-height:300px;border-right:0;border-bottom:1px solid var(--line)}.analytics-note>.text-button{margin-left:54px}}
+@media(max-width:620px){.project-art{padding:25px;min-height:240px}.project-card:first-child .project-art{min-height:260px}.project-art strong{font-size:2.35rem}.analytics-note>.text-button{margin-left:41px}}
 @media(hover:hover) and (prefers-reduced-motion:no-preference){.art-lines{animation:chart-breathe 6s ease-in-out infinite}@keyframes chart-breathe{50%{opacity:.5;translate:0 -5px}}}
