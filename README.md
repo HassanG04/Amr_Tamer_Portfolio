@@ -31,7 +31,7 @@ Repository: https://github.com/HassanG04/Amr_Tamer_Portfolio
 
 Vercel project: amr-tamer-portfolio. Framework: Other. No build command. The root folder is served directly. Environment files and local Vercel metadata are excluded from Git.
 
-Live website: https://amr-tamer-portfolio.vercel.app/
+Live website: https://amr-tamer-ahmed.vercel.app/ (the shorter amr-tamer-portfolio.vercel.app address was unavailable.)
 
 Deploy with Vercel CLI from this folder. Automatic GitHub-triggered deployment still requires a GitHub Login Connection in the Vercel account.
 
