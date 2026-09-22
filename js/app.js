@@ -28,13 +28,16 @@
   const tags = values => '<div class="tags">' + values.map(t => '<span data-tech="'+escape(t.toLowerCase().replace(/\s+/g,'-'))+'">'+escape(t)+'</span>').join('') + '</div>';
   $('#servicesGrid').innerHTML = data.services.map(s => '<article class="service-card surface interactive-card reveal"><div class="service-top">'+icon(s.icon)+'<span>'+s.number+'</span></div><h3>'+escape(s.title)+'</h3><p>'+escape(s.text)+'</p><div class="service-deliverable">'+escape(s.deliverable)+'</div>'+tags(s.tags)+'</article>').join('');
   $('#experienceList').innerHTML = data.experience.map(e => '<article class="experience-row reveal"><span>'+escape(e.period)+'</span><div><h4>'+escape(e.title)+'</h4><small>'+escape(e.company)+'</small></div><p>'+escape(e.description)+'</p></article>').join('');
-  const linkedIn='https://www.linkedin.com/in/amr-tamer-ahmed/';
-  const requestLink=label=>'<a class="text-button" href="'+linkedIn+'" target="_blank" rel="noopener noreferrer">'+label+' '+icon('external')+'</a>';
-  $('#projectsGrid').innerHTML=data.projects.map(p=>'<article class="project-card surface interactive-card reveal"><div class="project-art art-'+p.id+'" aria-hidden="true"><span class="art-index">'+p.number+' / SELECTED RESEARCH</span><div class="art-lines"><i></i><i></i><i></i><i></i><i></i></div><strong>'+escape(p.title)+'</strong><span class="art-caption">Business context. Financial perspective.</span></div><div class="project-content"><span class="eyebrow">'+p.number+' / '+escape(p.category)+'</span><h3>'+escape(p.title)+'</h3><p>'+escape(p.context)+'</p><dl><dt>THE APPROACH</dt><dd>'+escape(p.approach)+'</dd><dt>THE DELIVERABLE</dt><dd>'+escape(p.outcome)+'</dd></dl>'+tags(p.tags)+'<div class="project-footer"><small>'+escape(p.credit)+'</small>'+requestLink('Request via LinkedIn')+'</div></div></article>').join('');
+  const externalLink=(label,url,className='text-button')=>'<a class="'+className+'" href="'+escape(url)+'" target="_blank" rel="noopener noreferrer">'+escape(label)+' '+icon('external')+'</a>';
+  function projectTeam(p) {
+    const people=p.team.map(person=>'<a class="team-id" href="'+escape(person.url)+'" target="_blank" rel="noopener noreferrer" aria-label="View '+escape(person.name)+' on LinkedIn"><span class="team-id-emblem">'+icon('linkedin')+'</span><span class="team-id-copy"><strong>'+escape(person.name)+'</strong><small>Project teammate · LinkedIn profile</small></span>'+icon('external')+'</a>').join('');
+    return '<div class="project-flip-back" inert aria-hidden="true"><div class="team-back-heading"><span class="eyebrow">'+escape(p.number)+' / THE PEOPLE BEHIND THE WORK</span><h3>'+escape(p.title)+'</h3><p>Good research is a team effort. Meet the collaborators behind this project.</p></div><div class="team-ids">'+people+'</div>'+(p.thanks?'<p class="team-thanks">'+escape(p.thanks)+'</p>':'')+'<div class="team-back-actions">'+externalLink('View Presentation',p.presentation)+'<button class="flip-control" type="button" data-flip-project aria-label="Return to '+escape(p.title)+' project details">'+icon('left')+' Return to project</button></div></div>';
+  }
+  $('#projectsGrid').innerHTML=data.projects.map(p=>'<article class="project-card surface interactive-card reveal" data-project="'+escape(p.id)+'" tabindex="0" aria-label="'+escape(p.title)+' project card. Click to meet the team."><div class="project-flip-inner"><div class="project-flip-front" aria-hidden="false"><div class="project-media"><img src="'+escape(p.image)+'" alt="Cover of the '+escape(p.title)+' research presentation" loading="lazy" decoding="async"><span class="project-media-label">'+escape(p.number)+' / SELECTED RESEARCH</span></div><div class="project-content"><span class="eyebrow">'+escape(p.number)+' / '+escape(p.category)+'</span><h3>'+escape(p.title)+'</h3><p>'+escape(p.context)+'</p><dl><dt>THE APPROACH</dt><dd>'+escape(p.approach)+'</dd><dt>THE DELIVERABLE</dt><dd>'+escape(p.outcome)+'</dd></dl>'+tags(p.tags)+'<div class="project-footer"><small>'+escape(p.credit)+'</small>'+externalLink('View Presentation',p.presentation)+'</div><button class="flip-control" type="button" data-flip-project aria-label="Meet the '+escape(p.title)+' project team">'+icon('linkedin')+' Meet the team '+icon('arrow')+'</button></div></div>'+projectTeam(p)+'</div></article>').join('');
   function certificateImage(c) { return '<button class="certificate-image" type="button" data-certificate="'+c.id+'" aria-label="Inspect '+escape(c.title)+' certificate"><img src="'+c.image+'" alt="'+escape(c.title)+' certificate awarded to Amr Tamer" width="'+c.width+'" height="'+c.height+'" loading="lazy" decoding="async"><span class="preview-badge">'+icon('expand')+' Inspect certificate</span></button>'; }
-  function certificateCopy(c) { return '<div class="certificate-copy"><span class="eyebrow">LEARNING INTO PRACTICE</span><h4>'+escape(c.title)+'</h4><p>'+escape(c.description)+'</p>'+tags(c.tags)+requestLink('Request via LinkedIn')+'</div>'; }
+  function certificateCopy(c) { return '<div class="certificate-copy"><span class="eyebrow">LEARNING INTO PRACTICE</span><h4>'+escape(c.title)+'</h4><p>'+escape(c.description)+'</p>'+tags(c.tags)+'</div>'; }
   $('#certificateTrack').innerHTML=data.certificates.slice(0,2).map((c,i)=>'<article class="certificate-slide'+(i?'':' is-active')+'" role="group" aria-roledescription="slide" aria-label="'+(i+1)+' of 2: '+escape(c.title)+'"'+(i?' inert aria-hidden="true"':' aria-hidden="false"')+'>'+certificateImage(c)+certificateCopy(c)+'</article>').join('');
-  $('#learningCards').innerHTML=data.certificates.slice(2).map((c,i)=>'<section class="learning-group" aria-labelledby="'+c.id+'Heading"><div class="journey-label reveal"><span>0'+(i+2)+'</span><div><h3 id="'+c.id+'Heading">'+escape(c.issuer)+'</h3><p>'+(i?'Professional skills for a changing world.':'Turning data into a business perspective.')+'</p></div></div><article class="learning-card surface interactive-card reveal">'+certificateImage(c)+certificateCopy(c)+'</article></section>').join('');
+  $('#learningCards').innerHTML=data.certificates.slice(2).map((c,i)=>'<section class="learning-group" aria-labelledby="'+c.id+'Heading"><div class="journey-label reveal"><span>0'+(i+2)+'</span><div><h3 id="'+c.id+'Heading">'+escape(c.issuer)+'</h3><p>'+escape(c.subtitle)+'</p></div></div><article class="learning-card surface interactive-card reveal">'+certificateImage(c)+certificateCopy(c)+'</article></section>').join('');
   mountIcons();
   $('#year').textContent=new Date().getFullYear();
 
@@ -90,8 +93,27 @@
   });
   document.addEventListener('click',e=>{
     const control=e.target.closest('a,button');if(!control)return;
-    if(control.matches('#soundToggle,#themeToggle,#menuToggle,#certPrev,#certNext,[data-slide],[data-certificate],#closeCertificate'))return;
+    if(control.matches('#soundToggle,#themeToggle,#menuToggle,#certPrev,#certNext,[data-slide],[data-certificate],#closeCertificate,[data-flip-project]'))return;
     playSound('select');
+  });
+  function flipProject(card) {
+    const flipped=card.classList.toggle('is-flipped');
+    const front=card.querySelector('.project-flip-front'),back=card.querySelector('.project-flip-back');
+    front.inert=flipped;back.inert=!flipped;
+    front.setAttribute('aria-hidden',String(flipped));back.setAttribute('aria-hidden',String(!flipped));
+    card.setAttribute('aria-label',flipped?'Team behind '+card.querySelector('.project-content h3').textContent+'. Click to return to project details.':card.querySelector('.project-content h3').textContent+' project card. Click to meet the team.');
+    playSound(flipped?'left':'right');
+    if(matchMedia('(max-width:620px)').matches)card.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  $('#projectsGrid').addEventListener('click',e=>{
+    const card=e.target.closest('.project-card');
+    if(!card||e.target.closest('a'))return;
+    flipProject(card);
+  });
+  $('#projectsGrid').addEventListener('keydown',e=>{
+    const card=e.target.closest('.project-card');
+    if(!card||e.target!==card||!['Enter',' '].includes(e.key))return;
+    e.preventDefault();flipProject(card);
   });
 
   const menu=$('#mainNav'),menuToggle=$('#menuToggle');
@@ -124,7 +146,7 @@
   $('.carousel-viewport').addEventListener('touchstart',e=>{touchX=e.changedTouches[0].clientX;touchY=e.changedTouches[0].clientY;},{passive:true});
   $('.carousel-viewport').addEventListener('touchend',e=>{const x=e.changedTouches[0].clientX-touchX,y=e.changedTouches[0].clientY-touchY;if(Math.abs(x)>45&&Math.abs(x)>Math.abs(y)*1.3){swipedAt=performance.now();showSlide(activeSlide+(x<0?1:-1));}},{passive:true});
 
-  // Only the four explicitly approved certificate images are displayed publicly.
+  // Only the certificate images explicitly approved by the owner are displayed publicly.
   const certificateDialog=$('#certificateDialog');
   let certificateTrigger=null;
   document.addEventListener('click',e=>{
