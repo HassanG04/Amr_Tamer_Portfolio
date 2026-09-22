@@ -10,4 +10,4 @@
 .project-footer>.text-button{font-size:.73rem}
 @media(max-width:850px){.project-card:first-child .project-art{min-height:300px;border-right:0;border-bottom:1px solid var(--line)}.analytics-note>.text-button{margin-left:54px}}
 @media(max-width:620px){.project-art{padding:25px;min-height:240px}.project-card:first-child .project-art{min-height:260px}.project-art strong{font-size:2.35rem}.analytics-note>.text-button{margin-left:41px}}
-@media(hover:hover) and (prefers-reduced-motion:no-preference){.art-lines{animation:chart-breathe 6s ease-in-out infinite}@keyframes chart-breathe{50%{opacity:.5;translate:0 -5px}}}
+@media(hover:hover){.art-lines{animation:chart-breathe 6s ease-in-out infinite}@keyframes chart-breathe{50%{opacity:.5;translate:0 -5px}}}

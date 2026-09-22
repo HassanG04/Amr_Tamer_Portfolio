@@ -43,6 +43,7 @@
     set(key,value) { try {localStorage.setItem('amr-'+key,value);} catch {} }
   };
   const systemTheme=matchMedia('(prefers-color-scheme: dark)');
+  const listenMedia=(query,handler)=>{if(query.addEventListener)query.addEventListener('change',handler);else if(query.addListener)query.addListener(handler);};
   function setTheme(theme,save=false) {
     document.documentElement.dataset.theme=theme;
     $('#themeToggle').innerHTML=icon(theme==='dark'?'sun':'moon');
@@ -53,7 +54,7 @@
     if(save)storage.set('theme',theme);
   }
   setTheme(storage.get('theme')||(systemTheme.matches?'dark':'light'));
-  systemTheme.addEventListener('change',e=>{if(!storage.get('theme'))setTheme(e.matches?'dark':'light');});
+  listenMedia(systemTheme,e=>{if(!storage.get('theme'))setTheme(e.matches?'dark':'light');});
 
   // One sound gate owns every cue. Muting pauses even sounds already playing.
   let soundEnabled=storage.get('sound')==='on', audioUnlocked=false;
@@ -103,7 +104,7 @@
   menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
   document.addEventListener('click',e=>{if(!e.composedPath().includes($('.site-header')))closeMenu();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('is-open')){closeMenu();menuToggle.focus();}});
-  matchMedia('(min-width:851px)').addEventListener('change',e=>{if(e.matches)closeMenu();});
+  listenMedia(matchMedia('(min-width:851px)'),e=>{if(e.matches)closeMenu();});
 
   // Both slides share the same intrinsic height, so navigation never jumps.
   const track=$('#certificateTrack'), slides=$$('.certificate-slide');
@@ -159,7 +160,7 @@
   }else idleCards.forEach(card=>card.classList.add('motion-in-view'));
   function syncMotionVisibility(){document.documentElement.classList.toggle('motion-paused',document.hidden);}
   document.addEventListener('visibilitychange',syncMotionVisibility);syncMotionVisibility();
-  if('IntersectionObserver' in window&&!reducedMotion.matches){
+  if('IntersectionObserver' in window){
     const reveals=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');reveals.unobserve(e.target);}});},{threshold:.08});
     document.documentElement.classList.add('motion-ready');$$('.reveal').forEach(el=>reveals.observe(el));
   }
@@ -172,7 +173,7 @@
     navLinks.forEach(a=>{if(a.hash==='#'+current)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
   }
   addEventListener('scroll',()=>{if(!scrollFrame)scrollFrame=requestAnimationFrame(updateScroll);},{passive:true});addEventListener('resize',updateScroll);updateScroll();
-  if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!reducedMotion.matches){
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches){
     $$('.interactive-card').forEach(card=>{
       let frame=0;
       card.addEventListener('pointermove',e=>{if(frame)return;frame=requestAnimationFrame(()=>{const b=card.getBoundingClientRect(),x=(e.clientX-b.left)/b.width,y=(e.clientY-b.top)/b.height;card.style.setProperty('--rx',((.5-y)*3).toFixed(2)+'deg');card.style.setProperty('--ry',((x-.5)*3).toFixed(2)+'deg');card.style.setProperty('--mx',(x*100)+'%');card.style.setProperty('--my',(y*100)+'%');frame=0;});});
