@@ -3,7 +3,7 @@ window.AMR_DATA = {
   services: [
     { number: '01', icon: 'chart', title: 'Financial modeling & valuation', text: 'Understand the drivers behind a business with structured financial models and clearly documented assumptions.', deliverable: 'Three-statement models · DCF analysis · Financial forecasts', tags: ['Excel', 'Financial Analysis', 'DCF'] },
     { number: '02', icon: 'database', title: 'Business data & dashboards', text: 'Turn scattered data into a consistent view of performance that your team can explore and explain.', deliverable: 'Data cleaning · KPI reporting · Interactive dashboards', tags: ['Power BI', 'SQL', 'Python'] },
-    { number: '03', icon: 'document', title: 'Research & presentations', text: 'Connect company and industry research to a financial story that people can follow.', deliverable: 'Company research · Financial presentations · Business storytelling', tags: ['Equity Research', 'PowerPoint', 'Excel'] }
+    { number: '03', icon: 'document', title: 'Presentations', text: 'Connect company and industry research to a financial story that people can follow.', deliverable: 'Company research · Financial presentations · Business storytelling', tags: ['PowerPoint', 'Excel'] }
   ],
   experience: [
     { period: 'JUN – DEC 2025', title: 'Data Analyst Intern', company: 'Digital Egypt Pioneers Initiative', description: 'Cleaned and organized datasets, explored trends using Excel, SQL, and Python, and built Power BI dashboards to communicate business insights.' },

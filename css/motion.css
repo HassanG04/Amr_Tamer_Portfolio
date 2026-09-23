@@ -5,9 +5,6 @@
 .hero-name{display:grid;gap:5px;line-height:1.08;margin:26px 0 20px;color:var(--text)}
 .hero-name strong{font-size:clamp(2rem,3.2vw,3rem);font-weight:850;letter-spacing:-.045em}
 .hero-name span{padding:0;color:var(--accent);font-size:.83rem;font-weight:750;letter-spacing:.19em}
-.cv-source{display:grid;gap:3px;max-width:540px;margin:-3px 0 15px;font-size:.69rem;line-height:1.5;overflow-wrap:anywhere;color:var(--muted)}
-.cv-source span:first-child{font-size:.65rem;font-weight:750;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-.cv-source:hover span:last-child,.cv-source:focus-visible span:last-child{text-decoration:underline;text-decoration-color:var(--accent)}
 .education-footer small{font-size:.83rem;color:var(--text);font-weight:700}
 .education-footer small b{display:block;font-size:1.28rem;line-height:1.2;color:var(--accent)}
 .linkedin-button{min-height:42px;gap:10px;padding:9px 15px;background:var(--surface);font-size:.78rem;border-color:var(--line);color:var(--text)}
@@ -16,8 +13,8 @@
 .hero-actions{margin-bottom:13px}
 
 .tool-strip .shell{gap:10px;padding-block:18px}
-.tool-chip,.tags [data-tech]{--chip-color:var(--accent)}
-.tool-chip{position:relative;padding:10px 15px;border:1px solid color-mix(in srgb,var(--chip-color) 28%,transparent);border-radius:12px;isolation:isolate;color:var(--chip-color);background:color-mix(in srgb,var(--chip-color) 8%,var(--surface));font-weight:700;transition:color .22s,background .22s,border-color .22s,box-shadow .3s,transform .35s cubic-bezier(.2,.8,.2,1)}
+:where(.tool-chip,.tags [data-tech]){--chip-color:var(--accent)}
+.tool-chip{position:relative;padding:10px 15px;border:1px solid color-mix(in srgb,var(--chip-color) 54%,transparent);border-radius:12px;isolation:isolate;color:var(--chip-color);background:color-mix(in srgb,var(--chip-color) 19%,var(--surface));font-weight:750;transition:color .22s,background .22s,border-color .22s,box-shadow .3s,transform .35s cubic-bezier(.2,.8,.2,1)}
 .tool-chip::before{content:"";position:absolute;inset:-7px;z-index:-1;border-radius:inherit;background:radial-gradient(ellipse,color-mix(in srgb,var(--chip-color) 26%,transparent),transparent 70%);opacity:0;transform:scale(.8);transition:opacity .3s,transform .4s}
 [data-tech="excel"]{--chip-color:#4bd18e}[data-tech="power-bi"]{--chip-color:#e9c94b}[data-tech="sql"]{--chip-color:#4cc9d9}[data-tech="python"]{--chip-color:#72b5ee}[data-tech="financial-modeling"],[data-tech="financial-analysis"]{--chip-color:#ee88a4}[data-tech="equity-research"]{--chip-color:#e6ae72}
 [data-theme="light"] [data-tech="excel"]{--chip-color:#176642}[data-theme="light"] [data-tech="power-bi"]{--chip-color:#866300}[data-theme="light"] [data-tech="sql"]{--chip-color:#087385}[data-theme="light"] [data-tech="python"]{--chip-color:#246597}[data-theme="light"] [data-tech="financial-modeling"],[data-theme="light"] [data-tech="financial-analysis"]{--chip-color:#a51c40}[data-theme="light"] [data-tech="equity-research"]{--chip-color:#975516}
@@ -34,8 +31,8 @@
 [data-theme="light"] .tags [data-tech="problem-solving"],[data-theme="light"] .tags [data-tech="professional-development"]{--chip-color:#69488d}
 [data-theme="light"] .tags [data-tech="summer-training"]{--chip-color:#176e70}
 .tags span{font-size:.75rem;font-weight:700;color:var(--accent);background:color-mix(in srgb,var(--accent) 15%,var(--surface));border-color:color-mix(in srgb,var(--accent) 42%,transparent);padding:8px 12px}
-.tags [data-tech]{color:var(--chip-color);background:color-mix(in srgb,var(--chip-color) 17%,var(--surface));border-color:color-mix(in srgb,var(--chip-color) 52%,transparent)}
-.tool-chip:is(:hover,:focus-visible),.tags [data-tech]:hover{color:var(--chip-color);background:color-mix(in srgb,var(--chip-color) 10%,var(--surface));border-color:color-mix(in srgb,var(--chip-color) 50%,transparent);box-shadow:0 6px 25px color-mix(in srgb,var(--chip-color) 22%,transparent);transform:translateY(-4px) scale(1.055)}
+.tags [data-tech]{color:var(--chip-color);background:color-mix(in srgb,var(--chip-color) 25%,var(--surface));border-color:color-mix(in srgb,var(--chip-color) 70%,transparent);box-shadow:inset 0 1px color-mix(in srgb,var(--chip-color) 18%,transparent)}
+.tool-chip:is(:hover,:focus-visible),.tags [data-tech]:hover{color:var(--chip-color);background:color-mix(in srgb,var(--chip-color) 34%,var(--surface));border-color:var(--chip-color);box-shadow:0 6px 25px color-mix(in srgb,var(--chip-color) 28%,transparent);transform:translateY(-4px) scale(1.055)}
 .tool-chip:is(:hover,:focus-visible)::before{opacity:1;transform:scale(1.12)}
 
 .surface{isolation:isolate}
@@ -81,8 +78,8 @@
  .idle-card.surface:hover::after{animation:card-shine 1.5s ease-out}
  .hero-actions .primary{animation:action-breathe 4s ease-in-out infinite}
  .hero-copy>*{animation:hero-arrive .8s both cubic-bezier(.2,.8,.2,1)}
- .hero-copy h1{animation-delay:.1s}.hero-intro{animation-delay:.2s}.hero-role{animation-delay:.3s}.hero-copy .hero-actions{animation-delay:.4s}.hero-copy>.cv-source{animation-delay:.48s}.hero-copy>.linkedin-button{animation-delay:.55s}
+ .hero-copy h1{animation-delay:.1s}.hero-intro{animation-delay:.2s}.hero-role{animation-delay:.3s}.hero-copy .hero-actions{animation-delay:.4s}.hero-copy>.linkedin-button{animation-delay:.5s}
 @media(max-width:1100px){.tool-chip{padding:9px 10px}.tool-strip .shell{gap:5px}}
 @media(max-width:850px){.certificate-slide,.learning-card,.learning-group:last-child .learning-card{grid-template-columns:minmax(0,1fr)}.tool-strip .shell{justify-content:center;gap:7px 14px}.tool-strip .shell>span:first-child{width:100%;text-align:center}}
-@media(max-width:620px){.hero-name{margin:24px 0 18px}.hero-name strong{font-size:clamp(2rem,8vw,2.6rem)}.hero-name span{font-size:.68rem}.cv-source{font-size:.62rem;max-width:100%}.tool-strip .shell{gap:8px}.tool-chip{padding:9px 11px}.certificate-image .preview-badge{bottom:8px;font-size:.57rem}.certificate-slide{gap:26px}.interactive-card:hover,.motion-ready .interactive-card.reveal.visible:hover{transform:translateY(-2px) scale(1.005)}}
+@media(max-width:620px){.hero-name{margin:24px 0 18px}.hero-name strong{font-size:clamp(2rem,8vw,2.6rem)}.hero-name span{font-size:.68rem}.tool-strip .shell{gap:8px}.tool-chip{padding:9px 11px}.certificate-image .preview-badge{bottom:8px;font-size:.57rem}.certificate-slide{gap:26px}.interactive-card:hover,.motion-ready .interactive-card.reveal.visible:hover{transform:translateY(-2px) scale(1.005)}}
 @media(prefers-reduced-motion:reduce){.idle-card{--idle-distance:-3px;--idle-rotate:.12deg;animation-duration:12s}.surface::after{animation-duration:15s}.idle-card{--idle-distance:-3px;--idle-rotate:.12deg}.certificate-slide .certificate-image{transition-duration:.55s}.certificate-slide .certificate-copy{transition-duration:.45s}.tool-chip:hover{transform:translateY(-2px) scale(1.02)}}

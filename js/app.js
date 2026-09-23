@@ -15,8 +15,6 @@
     mail:'M3 5h18v14H3V5zm0 0 9 8 9-8',
     phone:'M7 3H4a1 1 0 0 0-1 1c0 9 8 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 2c-3-1-6-4-7-7l2-2-2-5z',
     linkedin:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z',
-    muted:'m11 5-5 4H3v6h3l5 4V5zm5 4 5 6m0-6-5 6',
-    sound:'m11 5-5 4H3v6h3l5 4V5zm5 3c3 2 3 6 0 8m3-11c5 4 5 10 0 14',
     moon:'M20 14A8 8 0 0 1 10 4a8.5 8.5 0 1 0 10 10z',
     sun:'M12 3V1m0 22v-2M3 12H1m22 0h-2M5 5 3 3m18 18-2-2M5 19l-2 2M21 3l-2 2M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z',
     menu:'M4 6h16M4 12h16M4 18h16', close:'m6 6 12 12M6 18 12-12',
@@ -30,10 +28,10 @@
   $('#experienceList').innerHTML = data.experience.map(e => '<article class="experience-row reveal"><span>'+escape(e.period)+'</span><div><h4>'+escape(e.title)+'</h4><small>'+escape(e.company)+'</small></div><p>'+escape(e.description)+'</p></article>').join('');
   const externalLink=(label,url,className='text-button')=>'<a class="'+className+'" href="'+escape(url)+'" target="_blank" rel="noopener noreferrer">'+escape(label)+' '+icon('external')+'</a>';
   function projectTeam(p) {
-    const people=p.team.map(person=>'<a class="team-id" href="'+escape(person.url)+'" target="_blank" rel="noopener noreferrer" aria-label="View '+escape(person.name)+' on LinkedIn"><span class="team-id-emblem">'+icon('linkedin')+'</span><span class="team-id-copy"><strong>'+escape(person.name)+'</strong><small>Project teammate · LinkedIn profile</small></span>'+icon('external')+'</a>').join('');
-    return '<div class="project-flip-back" inert aria-hidden="true"><div class="team-back-heading"><span class="eyebrow">'+escape(p.number)+' / THE PEOPLE BEHIND THE WORK</span><h3>'+escape(p.title)+'</h3><p>Good research is a team effort. Meet the collaborators behind this project.</p></div><div class="team-ids">'+people+'</div>'+(p.thanks?'<p class="team-thanks">'+escape(p.thanks)+'</p>':'')+'<div class="team-back-actions">'+externalLink('View Presentation',p.presentation)+'<button class="flip-control" type="button" data-flip-project aria-label="Return to '+escape(p.title)+' project details">'+icon('left')+' Return to project</button></div></div>';
+    const people=p.team.map(person=>'<a class="team-id" href="'+escape(person.url)+'" target="_blank" rel="noopener noreferrer" aria-label="View '+escape(person.name)+' on LinkedIn"><span class="team-id-photo">'+icon('linkedin')+'</span><strong class="team-id-name">'+escape(person.name)+'</strong><span class="team-id-label">LinkedIn</span><span class="team-id-description">Collaborator on the '+escape(p.title)+' project.</span><span class="team-id-open">Open profile '+icon('external')+'</span></a>').join('');
+    return '<div class="project-flip-back" inert aria-hidden="true"><div class="team-back-content"><div class="team-back-heading"><span class="eyebrow">'+escape(p.number)+' / THE PEOPLE BEHIND THE WORK</span><h3>'+escape(p.title)+'</h3><p>Good research is a team effort. Meet the collaborators behind this project.</p></div><div class="team-ids">'+people+'</div>'+(p.thanks?'<p class="team-thanks">'+escape(p.thanks)+'</p>':'')+'<div class="team-back-actions">'+externalLink('View Presentation',p.presentation)+'<button class="flip-control" type="button" data-flip-project aria-label="Return to '+escape(p.title)+' project details">'+icon('left')+' Return to project</button></div></div></div>';
   }
-  $('#projectsGrid').innerHTML=data.projects.map(p=>'<article class="project-card surface interactive-card reveal" data-project="'+escape(p.id)+'" tabindex="0" aria-label="'+escape(p.title)+' project card. Click to meet the team."><div class="project-flip-inner"><div class="project-flip-front" aria-hidden="false"><div class="project-media"><img src="'+escape(p.image)+'" alt="Cover of the '+escape(p.title)+' research presentation" loading="lazy" decoding="async"><span class="project-media-label">'+escape(p.number)+' / SELECTED RESEARCH</span></div><div class="project-content"><span class="eyebrow">'+escape(p.number)+' / '+escape(p.category)+'</span><h3>'+escape(p.title)+'</h3><p>'+escape(p.context)+'</p><dl><dt>THE APPROACH</dt><dd>'+escape(p.approach)+'</dd><dt>THE DELIVERABLE</dt><dd>'+escape(p.outcome)+'</dd></dl>'+tags(p.tags)+'<div class="project-footer"><small>'+escape(p.credit)+'</small>'+externalLink('View Presentation',p.presentation)+'</div><button class="flip-control" type="button" data-flip-project aria-label="Meet the '+escape(p.title)+' project team">'+icon('linkedin')+' Meet the team '+icon('arrow')+'</button></div></div>'+projectTeam(p)+'</div></article>').join('');
+  $('#projectsGrid').innerHTML=data.projects.map(p=>'<article class="project-card surface interactive-card reveal" data-project="'+escape(p.id)+'" tabindex="0" aria-label="'+escape(p.title)+' project card. Click to meet the team."><div class="project-flip-inner"><div class="project-flip-front" aria-hidden="false"><div class="project-media"><img src="'+escape(p.image)+'" alt="Cover of the '+escape(p.title)+' research presentation" loading="lazy" decoding="async"><span class="project-media-label">'+escape(p.number)+' / SELECTED RESEARCH</span><span class="flip-hint" aria-hidden="true">Click me</span></div><div class="project-content"><span class="eyebrow">'+escape(p.number)+' / '+escape(p.category)+'</span><h3>'+escape(p.title)+'</h3><p>'+escape(p.context)+'</p><dl><dt>THE APPROACH</dt><dd>'+escape(p.approach)+'</dd><dt>THE DELIVERABLE</dt><dd>'+escape(p.outcome)+'</dd></dl>'+tags(p.tags)+'<div class="project-footer"><small>'+escape(p.credit)+'</small>'+externalLink('View Presentation',p.presentation)+'</div><button class="flip-control" type="button" data-flip-project aria-label="Meet the '+escape(p.title)+' project team">'+icon('linkedin')+' Meet the team '+icon('arrow')+'</button></div></div>'+projectTeam(p)+'</div></article>').join('');
   function certificateImage(c) { return '<button class="certificate-image" type="button" data-certificate="'+c.id+'" aria-label="Inspect '+escape(c.title)+' certificate"><img src="'+c.image+'" alt="'+escape(c.title)+' certificate awarded to Amr Tamer" width="'+c.width+'" height="'+c.height+'" loading="lazy" decoding="async"><span class="preview-badge">'+icon('expand')+' Inspect certificate</span></button>'; }
   function certificateCopy(c) { return '<div class="certificate-copy"><span class="eyebrow">LEARNING INTO PRACTICE</span><h4>'+escape(c.title)+'</h4><p>'+escape(c.description)+'</p>'+tags(c.tags)+'</div>'; }
   $('#certificateTrack').innerHTML=data.certificates.slice(0,2).map((c,i)=>'<article class="certificate-slide'+(i?'':' is-active')+'" role="group" aria-roledescription="slide" aria-label="'+(i+1)+' of 2: '+escape(c.title)+'"'+(i?' inert aria-hidden="true"':' aria-hidden="false"')+'>'+certificateImage(c)+certificateCopy(c)+'</article>').join('');
@@ -59,29 +57,16 @@
   setTheme(storage.get('theme')||(systemTheme.matches?'dark':'light'));
   listenMedia(systemTheme,e=>{if(!storage.get('theme'))setTheme(e.matches?'dark':'light');});
 
-  // One sound gate owns every cue. Muting pauses even sounds already playing.
-  let soundEnabled=storage.get('sound')==='on', audioUnlocked=false;
+  // Keep interaction cues active without a separate sound control.
   const sounds=new Map();
   const soundVolumes={cursor:.09,select:.18,select2:.18,left:.18,right:.18,front:.08,back:.08};
   Object.keys(soundVolumes).forEach(name=>{const a=new Audio('sounds/'+name+'.mp3');a.preload='none';sounds.set(name,a);});
   function playSound(name) {
-    if(!soundEnabled||!audioUnlocked)return;
     const audio=sounds.get(name);if(!audio)return;
     audio.volume=soundVolumes[name];audio.currentTime=0;
     const promise=audio.play();if(promise)promise.catch(()=>{});
   }
-  function syncSoundButton() {
-    const b=$('#soundToggle'),label=(soundEnabled?'Mute':'Enable')+' all site sounds';
-    b.setAttribute('aria-label',label);b.title=label;b.setAttribute('aria-pressed',String(soundEnabled));b.innerHTML=icon(soundEnabled?'sound':'muted');
-  }
   function muteSounds(){sounds.forEach(a=>{a.pause();a.currentTime=0;});}
-  syncSoundButton();
-  document.addEventListener('pointerdown',()=>{audioUnlocked=true;},{capture:true,once:true});
-  document.addEventListener('keydown',()=>{audioUnlocked=true;},{capture:true,once:true});
-  $('#soundToggle').addEventListener('click',()=>{
-    soundEnabled=!soundEnabled;audioUnlocked=true;storage.set('sound',soundEnabled?'on':'off');syncSoundButton();
-    if(!soundEnabled)muteSounds();else playSound('select');
-  });
   document.addEventListener('visibilitychange',()=>{if(document.hidden)muteSounds();});
   $('#themeToggle').addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';setTheme(next,true);playSound(next==='light'?'select2':'select');});
   let hoverAt=0;
@@ -93,7 +78,7 @@
   });
   document.addEventListener('click',e=>{
     const control=e.target.closest('a,button');if(!control)return;
-    if(control.matches('#soundToggle,#themeToggle,#menuToggle,#certPrev,#certNext,[data-slide],[data-certificate],#closeCertificate,[data-flip-project]'))return;
+    if(control.matches('#themeToggle,#menuToggle,#certPrev,#certNext,[data-slide],[data-certificate],#closeCertificate,[data-flip-project]'))return;
     playSound('select');
   });
   function flipProject(card) {
@@ -115,6 +100,16 @@
     if(!card||e.target!==card||!['Enter',' '].includes(e.key))return;
     e.preventDefault();flipProject(card);
   });
+  const projectsGrid=$('#projectsGrid');
+  if('IntersectionObserver' in window){
+    const hintObserver=new IntersectionObserver(entries=>{
+      if(!entries.some(entry=>entry.isIntersecting))return;
+      projectsGrid.classList.add('show-flip-hint');
+      setTimeout(()=>projectsGrid.classList.remove('show-flip-hint'),5000);
+      hintObserver.disconnect();
+    },{threshold:.1});
+    hintObserver.observe(projectsGrid);
+  }
 
   const menu=$('#mainNav'),menuToggle=$('#menuToggle');
   function closeMenu(){menu.classList.remove('is-open');menuToggle.setAttribute('aria-expanded','false');menuToggle.setAttribute('aria-label','Open navigation');menuToggle.innerHTML=icon('menu');}

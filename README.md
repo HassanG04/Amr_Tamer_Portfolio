@@ -15,13 +15,13 @@ Original PDFs remain in the owner's local project folder. The files/ and Certifi
 - css/styles.css: responsive layouts, wine-red/black and red/white themes, and animations.
 - css/summaries.css: responsive presentation covers and flippable teammate ID cards.
 - css/motion.css: toolkit glows, idle float and shine, shared hover motion, and certificate transitions.
-- js/app.js: navigation, theme preference, unified sound controls, and the two-slide 365 Financial Analyst carousel.
+- js/app.js: navigation, theme preference, interaction sounds, and the two-slide 365 Financial Analyst carousel.
 - images/profile.jpeg: supplied portrait.
 - sounds/: local interface cues; there is no ambience.
 
-The theme follows the system initially and remembers a visitor's selection. Sounds start muted for new visitors and are optional. The sound button mutes every cue, including any already playing; browser interaction rules still apply. Reduced-motion preferences are respected. Idle card animations pause outside the viewport or when the page is hidden. The 365 carousel moves the full photograph and description together and supports arrows, keyboard navigation, and swipes. Clicking a certificate opens only its approved image in an on-site viewer.
+The theme follows the system initially and remembers a visitor's selection. Interface sound cues remain active without a separate sound button; browser autoplay rules and device mute settings still apply. Reduced-motion preferences are respected. Idle card animations pause outside the viewport or when the page is hidden. The 365 carousel moves the full photograph and description together and supports arrows, keyboard navigation, and swipes. Clicking a certificate opens only its approved image in an on-site viewer.
 
-Activity order: 365 Financial Analyst → DEPI → McKinsey.org Forward → Dreem. Projects are attributed as collaborative research studies, not client investment results. Each project card links to its presentation and flips to reveal teammate LinkedIn profiles. No testimonials or returns have been invented.
+Activity order: 365 Financial Analyst → DEPI → McKinsey.org Forward → Dreem. Projects are attributed as collaborative research studies, not client investment results. Each project card links to its presentation and flips to reveal teammate LinkedIn ID cards. A five-second hint appears when the selected-work cards enter view. No testimonials or returns have been invented.
 
 ## Preview and deploy
 
