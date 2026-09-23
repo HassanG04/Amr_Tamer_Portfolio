@@ -4,9 +4,9 @@ A responsive static portfolio built with HTML, CSS, and JavaScript. No build ste
 
 ## Public website / private documents
 
-This repository publishes work summaries, the five approved certificate images (365, DEPI, McKinsey, and Dreem), and three approved presentation cover images (Arabian Cement, Elsewedy, and WE). The owner-supplied public Google Drive links open the CV and three presentations directly. Original CV, presentation PDFs, certificate PDFs, résumé previews, personal email, and phone number are not uploaded to this repository or Vercel.
+This repository publishes work summaries, the five approved certificate images (365, DEPI, McKinsey, and Dreem), three approved presentation cover images (Arabian Cement, Elsewedy, and WE), and the supplied social-link thumbnail. The owner-supplied public Google Drive links open the CV and three presentations directly. Original CV, presentation PDFs, certificate PDFs, résumé previews, personal email, and phone number are not uploaded to this repository or Vercel.
 
-Original PDFs remain in the owner's local project folder. The files/ and Certificates/ folders, rendered PDF previews, and extracted résumé text are excluded from both Git and Vercel uploads. Only the seven named PNG images are allowed through the image exclusions. Do not force-add other files or remove privacy exclusions without permission.
+Original PDFs remain in the owner's local project folder. The files/ and Certificates/ folders, rendered PDF previews, and extracted résumé text are excluded from both Git and Vercel uploads. Only the eight named PNG images are allowed through the image exclusions. Do not force-add other files or remove privacy exclusions without permission.
 
 ## Content and design
 
